@@ -1,0 +1,43 @@
+<%- include('partials/header') -%>
+
+<body>
+  <div class="container">
+    <h1>🌽 Node Farm 🥦</h1>
+
+    <div class="cards-container">
+      <% data.forEach((item) => { %>
+      <figure class="card">
+        <div class="card__emoji"><%= item.image %></div>
+
+        <div class="card__title-box">
+          <h2 class="card__title"><%= item.productName %></h2>
+        </div>
+
+        <div class="card__details">
+          <div
+            class="card__detail-box <%= !item.organic ? 'not-organic' : ''; %>"
+          >
+            <h6 class="card__detail card__detail--organic">Organic!</h6>
+          </div>
+
+          <div class="card__detail-box">
+            <h6 class="card__detail"><%= item.quantity %> per</h6>
+          </div>
+
+          <div class="card__detail-box">
+            <h6 class="card__detail card__detail--price">
+              <%= item.price %> €
+            </h6>
+          </div>
+        </div>
+
+        <a class="card__link" href="products/<%= item.id %>">
+          <span>Detail <i class="emoji-right">👉</i></span>
+        </a>
+      </figure>
+
+      <% }) %>
+    </div>
+  </div>
+  <%- include('partials/footer') -%>
+</body>
